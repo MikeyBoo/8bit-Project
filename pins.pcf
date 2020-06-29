@@ -1,0 +1,10 @@
+# set_io --warn-no-port led_red 41 
+# set_io --warn-no-port led_green 40
+# set_io --warn-no-port led_blue 39
+
+set_io --warn-no-port reset 2
+set_io --warn-no-port hsync 43
+set_io --warn-no-port vsync 36
+set_io --warn-no-port rgb[0] 28
+set_io --warn-no-port rgb[1] 38
+set_io --warn-no-port rgb[2] 42
