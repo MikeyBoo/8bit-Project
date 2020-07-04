@@ -8,3 +8,6 @@ I used apio to init upduino21 and to verify and build binaries to make life easi
 To program the UPduino 3.0, I use Zadig that comes with apio:
 use the command "apio drivers --ftdi-enable" to run Zadig ot install appropriate USB driver then
 use command "iceprog -p hardware.bin" to program board
+
+notes:
+TinyFPGA also has jitter using SB_HFOSC as a source for PLL. From my research online, this is common and the best practice is to use an external oscillator. Using 12m pin into input pin 23 provides are much cleaner signal.

@@ -10,8 +10,9 @@ use "apio drivers --ftdi-enable"
 use "tinyprog -p hardware.bin" to program board
 */
 
-module test_hvsync_top(reset, hsync, vsync, rgb);
+module test_hvsync_top(CLK, reset, hsync, vsync, rgb);
 
+  input CLK;
   input reset;
   output hsync, vsync;
   output [2:0] rgb;
@@ -19,18 +20,19 @@ module test_hvsync_top(reset, hsync, vsync, rgb);
   wire [9:0] hpos;
   wire [9:0] vpos; 
 
-
-  SB_HFOSC
-  #(
+/*
+  SB_HFOSC #(
     .CLKHF_DIV ("0b00")
   ) my_osc (
     .CLKHFPU (1'b1),
     .CLKHFEN (1'b1),
     .CLKHF   (clk) 
   );
+*/
+// SB_HFOSC doesn't generate clean enough signal for PLL
 
 
-  pll my_pll(.clock_in(clk), .clock_out(my_clk)); //radiant pll generator works a lot better - when it decides to work, that is
+  pll my_pll(.clock_in(CLK), .clock_out(my_clk));
 
   hvsync_generator hvsync_gen(
     .clk(my_clk),
