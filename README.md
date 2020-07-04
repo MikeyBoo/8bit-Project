@@ -7,4 +7,4 @@ I used apio to init upduino21 and to verify and build binaries to make life easi
 
 To program the UPduino 3.0, I use Zadig that comes with apio:
 use the command "apio drivers --ftdi-enable" to run Zadig ot install appropriate USB driver then
-use command "tinyprog -p hardware.bin" to program board
+use command "iceprog -p hardware.bin" to program board

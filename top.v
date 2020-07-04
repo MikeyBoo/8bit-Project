@@ -22,7 +22,7 @@ module test_hvsync_top(reset, hsync, vsync, rgb);
 
   SB_HFOSC
   #(
-    .CLKHF_DIV ("0b10")
+    .CLKHF_DIV ("0b00")
   ) my_osc (
     .CLKHFPU (1'b1),
     .CLKHFEN (1'b1),
