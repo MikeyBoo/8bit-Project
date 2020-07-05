@@ -1,13 +1,34 @@
-This is a personal project where I'm building an 8-bit console using the book Designing Video Game Hardware in Verilog by Steven Hugg
-http://8bitworkshop.com/ using open source tools through apio https://github.com/FPGAwars/apio for the UPduino 3.0 which can be found here:
-https://www.tindie.com/products/tinyvision_ai/upduino-v30-low-cost-lattice-ice40-fpga-board/
+## __My 8-bit Gaming Console__
+### __Instroduction__
+This is a personal project building an early 8-bit gaming console using the book _Designing Video Game Hardware in Verilog_ by Steven Hugg, [8 bit workshop](http://8bitworkshop.com/), using the open source tools [apio](https://github.com/FPGAwars/apio) and the Upduino version 3.0 by [tinyvision.ai](https://tinyvision.ai/).
+
+### __Setup__
+To use apio to the fullest, add the following entry to your __boards.json__ file found in __Appdata->Local->Programs->Python->Python38->Lib->site-packages->apio->resources__
+
+---
+
+```json
+  "upduino3": {
+    "name": "UPduino v3.0",
+    "fpga": "iCE40-UP5K-SG48",
+    "programmer": {
+      "type": "iceprog"
+    },
+    "usb": {
+      "vid": "0403",
+      "pid": "6014"
+    },
+    "ftdi": {
+      "desc": "UPduino v3.0"
+    }
+  },
+```
+---
+
  
-I used apio to init upduino21 and to verify and build binaries to make life easier: 
-"apio init --board upduino21", "apio verify" & "apio build"
+With apio now ready to go, you can use the commands __apio verify__, __apio build__ and then __apio upload__
 
-To program the UPduino 3.0, I use Zadig that comes with apio:
-use the command "apio drivers --ftdi-enable" to run Zadig ot install appropriate USB driver then
-use command "iceprog -p hardware.bin" to program board
+To program the UPduino 3.0, use Zadig that comes with apio via the command __apio drivers --ftdi-enable__ to install appropriate USB driver.
 
-notes:
-TinyFPGA also has jitter using SB_HFOSC as a source for PLL. From my research online, this is common and the best practice is to use an external oscillator. Using 12m pin into input pin 23 provides are much cleaner signal.
+### __notes__
+SB_HFOSC was not stable enough to drive the PLL. From my research online, this is common for many boards and the best practice is to use an external crystal oscillator. The Upduino 3.0 has a very stable crystal oscillator on pin 12M.
