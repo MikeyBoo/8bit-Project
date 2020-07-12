@@ -32,3 +32,5 @@ To program the UPduino 3.0, use Zadig that comes with apio via the command __api
 
 ### __notes__
 SB_HFOSC was not stable enough to drive the PLL. From my research online, this is common for many boards and the best practice is to use an external crystal oscillator. The Upduino 3.0 has a very stable crystal oscillator on pin 12M.
+
+Makefile added that will use **apio** commands **verify**, **build**, **upload**, and then **clean**.
