@@ -20,6 +20,8 @@ module test_hvsync_top(CLK, reset, hsync, vsync, rgb);
 */
 // SB_HFOSC doesn't generate clean enough signal for PLL to drive VGA
 
+  cpu6502 cpu(CLK, reset, AB, DI, DO, WE, IRQ, NMI, RDY);
+
   pll my_pll(.clock_in(CLK), .clock_out(my_clk));
 
   hvsync_generator hvsync_gen(
